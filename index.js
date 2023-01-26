@@ -66,15 +66,7 @@ const App = () => {
       <h2 className='p-4'>Drum Machine</h2>
       <div id='display'>
         {audioClips.map((clip) => {
-          return (
-            <Pad
-              className='drum-pad'
-              id={clip.id}
-              key={clip.id}
-              clip={clip}
-              volume={volume}
-            />
-          )
+          return <Pad id={clip.id} key={clip.id} clip={clip} volume={volume} />
         })}
       </div>
       <br />
@@ -120,7 +112,9 @@ const Pad = ({ clip, volume }) => {
   return (
     <div
       onClick={playSound}
-      className={`btn btn-secondary p-4 m-3 ${active && 'btn-warning'}`}
+      className={`
+      drum-pad btn btn-secondary p-4 m-3 ${active && 'btn-warning'}`}
+      id={clip.id}
     >
       <audio className='clip' id={clip.keyTrigger} src={clip.url} />
       {clip.keyTrigger}
